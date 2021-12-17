@@ -51,11 +51,11 @@ for i in range(3):
     y += 60
 
 def light_green_2():
+    drivingR()
+    drivingL()
     canvas.delete("light2")
     canvas.create_oval(530,110,580, 160, fill="green", tags="light2")
     canvas.after(6000,light_yellow_2)
-    drivingR()
-    drivingL()
 
 def light_yellow_2():
     canvas.delete("light2")
