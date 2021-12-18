@@ -64,7 +64,7 @@ for i in range(3):
     canvas.create_oval(530,y,580, y+50, fill="gray")
     y += 60
 
-myCar1 = canvas.create_image(150, 450, image=car)
+myCar1 = canvas.create_image(0, 450, image=car)
 myCar2 = canvas.create_image(750, 350, image=carR)
 myCar3 = canvas.create_image(450, 640, image=carU)
 myCar4 = canvas.create_image(350, 40, image=carD)
@@ -78,8 +78,8 @@ def drivingL():
     if pos[0] < 900:
         canvas.move(myCar1, 15, 0)
     else:
-        myCar1 = canvas.create_image(150, 450, image=car)
-    canvas.after(150, drivingL)
+        myCar1 = canvas.create_image(0, 450, image=car)
+    canvas.after(100, drivingL)
     
 # Right
 def drivingR():
@@ -101,7 +101,7 @@ def drivingU():
         canvas.move(myCar3, 0, -15)
     else:
         myCar3 = canvas.create_image(450, 640, image=carU)
-    canvas.after(150, drivingU)
+    canvas.after(110, drivingU)
     
 # Down
 def drivingD():
