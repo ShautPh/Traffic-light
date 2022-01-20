@@ -1,5 +1,7 @@
 import tkinter as tk
-from tkinter import PhotoImage, font
+from tkinter import Image, PhotoImage, font
+from PIL import ImageTk
+
 window = tk.Tk()
 window.geometry("800x700")
 frame = tk.Frame()
@@ -8,6 +10,7 @@ frame.master.title("Traffic Lights")
 canvas = tk.Canvas(frame)
 
 # Image 
+bg = ImageTk.PhotoImage(file="./img/bg.jpg")
 street = PhotoImage(file="./img/road.png")
 street2 = PhotoImage(file="./img/road2.png")
 car = PhotoImage(file="./img/car.png")
@@ -16,6 +19,7 @@ carU = PhotoImage(file="./img/carU.png")
 carD = PhotoImage(file="./img/carD.png")
 
 #Graphic street
+canvas.create_image(10, 10, image=bg)
 canvas.create_image(400, 400, image=street)
 canvas.create_image(400, 400, image=street2)
 
@@ -126,7 +130,7 @@ def green4():
     canvas.after(6000,yellow4)
 canvas.after(600,red4)
 
-myCar1 = canvas.create_image(0, 450, image=car)
+myCar1 = canvas.create_image(0, 450, image=car, tags="car_left")
 myCar2 = canvas.create_image(750, 350, image=carR)
 myCar3 = canvas.create_image(450, 640, image=carU)
 myCar4 = canvas.create_image(350, 40, image=carD)
@@ -147,9 +151,11 @@ def drivingL():
     elif pos[0] < 900:
         canvas.move(myCar1, 15, 0)
     else:
-        myCar1 = canvas.create_image(0, 450, image=car)
+        canvas.delete("car_left")
+        myCar1 = canvas.create_image(0, 450, image=car, tags="car_left")
     canvas.after(100, drivingL)
-    
+
+# ____________________________________________________
 # Right
 def drivingR():
     global myCar2
